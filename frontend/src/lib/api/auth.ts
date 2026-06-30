@@ -57,6 +57,5 @@ export async function exchangeOAuthCode(code: string): Promise<AuthResponse> {
 
 // OAuth URLs
 export const getGoogleAuthUrl = () => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
-  return `${baseUrl}/auth/google`;
+  return `${process.env.NEXT_PUBLIC_API_URL}/api/v1/auth/google`;
 };
