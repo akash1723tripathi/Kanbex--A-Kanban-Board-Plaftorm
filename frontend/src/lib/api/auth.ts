@@ -60,8 +60,3 @@ export const getGoogleAuthUrl = () => {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
   return `${baseUrl}/auth/google`;
 };
-
-export const getAppleAuthUrl = () => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000/api/v1';
-  return `${baseUrl}/auth/apple`;
-};

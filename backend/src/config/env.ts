@@ -58,13 +58,6 @@ const envSchema = z.object({
   // The URL must match exactly what's registered in Google Cloud Console
   GOOGLE_CALLBACK_URL: z.string().optional(),
 
-  // OAuth - Apple (optional)
-  APPLE_CLIENT_ID: z.string().optional(),
-  APPLE_TEAM_ID: z.string().optional(),
-  APPLE_KEY_ID: z.string().optional(),
-  APPLE_PRIVATE_KEY: z.string().optional(),
-  APPLE_CALLBACK_URL: z.string().default('/api/v1/auth/apple/callback'),
-
   // File Storage - Cloudflare R2 (optional)
   R2_ACCOUNT_ID: z.string().optional(),
   R2_ACCESS_KEY_ID: z.string().optional(),

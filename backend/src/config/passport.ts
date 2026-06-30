@@ -118,10 +118,6 @@ if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
   );
 }
 
-// Apple OAuth Strategy (if configured)
-// Note: Apple Sign-In requires additional setup
-// You can add passport-apple if needed
-
 export function initializePassport() {
   return passport.initialize();
 }

@@ -94,13 +94,6 @@ router.get(
   }
 );
 
-// Apple OAuth routes (if configured)
-// GET /auth/apple - Start Apple OAuth
-// router.get('/apple', passport.authenticate('apple'));
-
-// GET /auth/apple/callback - Apple OAuth callback
-// router.post('/apple/callback', passport.authenticate('apple'), AuthController.oauthCallback);
-
 // ============ DEVELOPMENT ONLY ============
 // POST /auth/dev/oauth-test - Simulate OAuth login (dev only)
 if (process.env.NODE_ENV === 'development') {

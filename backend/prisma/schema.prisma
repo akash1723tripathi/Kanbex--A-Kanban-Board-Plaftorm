@@ -18,7 +18,7 @@ model User {
   name       String
   avatar     String?
   password   String?   // null for OAuth users
-  provider   String?   // google, apple, local
+  provider   String?   // google, local
   providerId String?   // OAuth provider ID
 
   createdAt  DateTime  @default(now())

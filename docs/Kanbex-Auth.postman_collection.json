@@ -1685,46 +1685,7 @@
               "host": ["{{baseUrl}}"],
               "path": ["auth", "dev", "oauth-test"]
             },
-            "description": "**DEVELOPMENT ONLY** - Simulate OAuth login without going through Google.\n\n**Required fields:**\n- provider: OAuth provider name (google, apple, github)\n- providerId: Unique ID from the OAuth provider\n- email: User's email from OAuth provider\n- name: User's display name from OAuth provider\n\n**Optional fields:**\n- avatar: URL to user's profile picture\n\n**Behavior:**\n- If user with this provider+providerId exists: logs them in\n- If user with this email exists: links OAuth to existing account\n- Otherwise: creates new user\n\n**Response:**\n- 201: User created/logged in with tokens\n- 400: Missing required fields"
-          },
-          "response": []
-        },
-        {
-          "name": "DEV - Simulate OAuth Login (Apple)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "if (pm.response.code === 201) {",
-                  "    const response = pm.response.json();",
-                  "    if (response.data && response.data.accessToken) {",
-                  "        pm.collectionVariables.set('accessToken', response.data.accessToken);",
-                  "    }",
-                  "}"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "body": {
-              "mode": "raw",
-              "raw": "{\n    \"provider\": \"apple\",\n    \"providerId\": \"apple.user.abc123xyz\",\n    \"email\": \"privaterelay@privaterelay.appleid.com\",\n    \"name\": \"Apple Test User\"\n}"
-            },
-            "url": {
-              "raw": "{{baseUrl}}/auth/dev/oauth-test",
-              "host": ["{{baseUrl}}"],
-              "path": ["auth", "dev", "oauth-test"]
-            },
-            "description": "**DEVELOPMENT ONLY** - Simulate Apple OAuth login.\n\nApple often provides a private relay email address."
+            "description": "**DEVELOPMENT ONLY** - Simulate OAuth login without going through Google.\n\n**Required fields:**\n- provider: OAuth provider name (google)\n- providerId: Unique ID from the OAuth provider\n- email: User's email from OAuth provider\n- name: User's display name from OAuth provider\n\n**Optional fields:**\n- avatar: URL to user's profile picture\n\n**Behavior:**\n- If user with this provider+providerId exists: logs them in\n- If user with this email exists: links OAuth to existing account\n- Otherwise: creates new user\n\n**Response:**\n- 201: User created/logged in with tokens\n- 400: Missing required fields"
           },
           "response": []
         },
