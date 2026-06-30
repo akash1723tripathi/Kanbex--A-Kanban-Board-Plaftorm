@@ -1,4 +1,5 @@
 import { Router, type Request, type Response } from 'express';
+import healthRoutes from './health.routes.js';
 import authRoutes from './auth.routes.js';
 import projectRoutes from './project.routes.js';
 import columnRoutes from './column.routes.js';
@@ -26,6 +27,9 @@ router.get('/', (_req: Request, res: Response) => {
     },
   });
 });
+
+// Health check routes - keep public and register before auth-protected routes
+router.use('/health', healthRoutes);
 
 // Route modules
 router.use('/auth', authRoutes);
