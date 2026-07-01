@@ -54,16 +54,16 @@ export function NewProjectModal({
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Create New Project</DialogTitle>
-          <DialogDescription>
-            Add a new project to organize your tasks.
-          </DialogDescription>
-        </DialogHeader>
-
         <form onSubmit={handleSubmit} className="space-y-4">
+          <DialogHeader>
+            <DialogTitle>Create New Project</DialogTitle>
+            <DialogDescription>
+              Add a new project to organize your tasks.
+            </DialogDescription>
+          </DialogHeader>
+
           <div className="space-y-2">
-            <label htmlFor="project-name" className="text-sm font-medium text-gray-700">
+            <label htmlFor="project-name" className="text-sm font-medium text-gray-700 dark:text-gray-300">
               Project Name
             </label>
             <input
@@ -79,8 +79,8 @@ export function NewProjectModal({
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="project-description" className="text-sm font-medium text-gray-700">
-              Description <span className="text-gray-400 font-normal">(optional)</span>
+            <label htmlFor="project-description" className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              Description <span className="text-gray-400 dark:text-gray-500 font-normal">(optional)</span>
             </label>
             <textarea
               id="project-description"

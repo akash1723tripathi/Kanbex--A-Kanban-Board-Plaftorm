@@ -154,7 +154,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
       <div className="flex items-center gap-3">
         <Link
           href={`/projects/${projectId}`}
-          className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
+          className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-200 transition-colors"
         >
           <ArrowLeft className="size-5" />
         </Link>
@@ -167,7 +167,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
       </div>
 
       {/* Settings Form */}
-      <div className="bg-white rounded-card border border-gray-200 shadow-card">
+      <div className="bg-white dark:bg-[#1e2533] rounded-card border border-gray-200 dark:border-[#2e3548] shadow-card dark:shadow-none">
         <form onSubmit={handleSave}>
           <div className="p-6 space-y-4">
             <div className="space-y-2">
@@ -179,7 +179,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="input-base disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="input-base disabled:bg-gray-50 dark:disabled:bg-white/5 disabled:cursor-not-allowed"
                 required
                 disabled={!canEditProject}
               />
@@ -194,7 +194,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={3}
-                className="input-base resize-none disabled:bg-gray-50 disabled:cursor-not-allowed"
+                className="input-base resize-none disabled:bg-gray-50 dark:disabled:bg-white/5 disabled:cursor-not-allowed"
                 disabled={!canEditProject}
               />
             </div>
@@ -207,7 +207,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
           </div>
 
           {canEditProject && (
-            <div className="flex justify-end px-6 py-4 border-t border-gray-100 bg-gray-50 rounded-b-card">
+            <div className="flex justify-end px-6 py-4 border-t border-gray-100 dark:border-[#2e3548] bg-gray-50 dark:bg-[#191f2c] rounded-b-card">
               <button
                 type="submit"
                 className="btn-primary flex items-center gap-2"
@@ -222,7 +222,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
       </div>
 
       {/* Labels Management */}
-      <div className="bg-white rounded-card border border-gray-200 shadow-card">
+      <div className="bg-white dark:bg-[#1e2533] rounded-card border border-gray-200 dark:border-[#2e3548] shadow-card dark:shadow-none">
         <div className="p-6">
           <div className="flex items-center justify-between">
             <div>
@@ -263,7 +263,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
       />
 
       {/* Team Members */}
-      <div className="bg-white rounded-card border border-gray-200 shadow-card">
+      <div className="bg-white dark:bg-[#1e2533] rounded-card border border-gray-200 dark:border-[#2e3548] shadow-card dark:shadow-none">
         <div className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div>
@@ -322,7 +322,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
 
       {/* Danger Zone - Only show for project owner */}
       {canDeleteProject && (
-        <div className="bg-white rounded-card border border-red-200 shadow-card">
+        <div className="bg-white dark:bg-[#1e2533] rounded-card border border-red-200 dark:border-red-900/50 shadow-card dark:shadow-none">
           <div className="p-6">
             <h2 className="text-base font-semibold text-gray-800 mb-1">
               Danger Zone
@@ -333,7 +333,7 @@ export default function ProjectSettingsPage({ params }: ProjectSettingsPageProps
             <button
               type="button"
               onClick={handleDelete}
-              className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-button text-sm font-medium transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-950/40 rounded-button text-sm font-medium transition-colors"
               disabled={deleteMutation.isPending}
             >
               {deleteMutation.isPending ? (

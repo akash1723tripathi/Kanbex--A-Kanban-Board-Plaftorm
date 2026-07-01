@@ -165,11 +165,11 @@ export function Hero() {
           >
             <div className="w-[58px] h-[58px] bg-gray-800 rounded-full flex items-center justify-center shadow-lg">
               <Image
-                src="/images/hero/kanbex-icon.svg"
+                src="/images/kanbex_logo_white.png"
                 alt="Kanbex"
-                width={24}
+                width={36}
                 height={36}
-                className="brightness-0 invert"
+                className="w-9 h-9 object-contain"
               />
             </div>
           </motion.div>

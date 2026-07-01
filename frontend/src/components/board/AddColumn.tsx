@@ -101,8 +101,8 @@ export function AddColumn({
         onClick={handleOpen}
         className={cn(
           'flex items-center justify-center gap-2 w-[300px] h-12',
-          'bg-gray-100 hover:bg-gray-200 rounded-xl',
-          'text-gray-500 hover:text-gray-700 text-sm',
+          'bg-gray-100 dark:bg-white/5 hover:bg-gray-200 dark:hover:bg-white/10 rounded-xl',
+          'text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-sm',
           'transition-colors flex-shrink-0',
           className
         )}
@@ -118,7 +118,7 @@ export function AddColumn({
     <div
       className={cn(
         'flex flex-col w-[300px] flex-shrink-0',
-        'bg-white border border-gray-200 rounded-xl p-3 shadow-sm',
+        'bg-white dark:bg-[#1e2533] border border-gray-200 dark:border-[#2e3548] rounded-xl p-3 shadow-sm dark:shadow-none',
         'animate-in fade-in-0 zoom-in-95 duration-200',
         className
       )}
@@ -133,8 +133,8 @@ export function AddColumn({
           placeholder={placeholder}
           disabled={isSubmitting}
           className={cn(
-            'w-full px-3 py-2 rounded-lg border border-gray-200',
-            'focus:border-gray-400 focus:ring-2 focus:ring-gray-800/10',
+            'w-full px-3 py-2 rounded-lg border border-gray-200 dark:border-[#2e3548] bg-transparent dark:bg-[#151922] text-gray-900 dark:text-gray-100',
+            'focus:border-gray-400 dark:focus:border-gray-600 focus:ring-2 focus:ring-gray-800/10 dark:focus:ring-white/5',
             'placeholder:text-gray-400 text-sm outline-none',
             'transition-colors',
             isSubmitting && 'opacity-50 cursor-not-allowed'
@@ -154,7 +154,7 @@ export function AddColumn({
               disabled={isSubmitting}
               className={cn(
                 'p-1.5 rounded-md text-gray-400 hover:text-gray-600',
-                'hover:bg-gray-100 transition-colors',
+                'hover:bg-gray-100 dark:hover:bg-white/5 transition-colors',
                 isSubmitting && 'opacity-50 cursor-not-allowed'
               )}
               title="Cancel (Esc)"
@@ -166,7 +166,7 @@ export function AddColumn({
               disabled={!name.trim() || isSubmitting}
               className={cn(
                 'px-3 py-1.5 rounded-lg text-sm font-medium',
-                'bg-gray-800 text-white hover:bg-gray-700',
+                'bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-200',
                 'disabled:opacity-50 disabled:cursor-not-allowed',
                 'transition-colors'
               )}

@@ -79,7 +79,7 @@ function AppShellInner({
     <div
       className={cn(
         'dashboard-theme-wrapper flex h-screen overflow-hidden',
-        isDark ? 'dark bg-[#141922]' : 'bg-page'
+        isDark ? 'dark bg-[#141922] text-[#dce3ed]' : 'bg-page'
       )}
     >
       {/* Desktop Sidebar - Hidden on mobile */}

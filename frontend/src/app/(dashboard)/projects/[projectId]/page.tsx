@@ -295,8 +295,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   return (
     <div className="flex flex-col h-full -m-4">
       {/* Project Header */}
-      <div className="flex items-center justify-between px-3 sm:px-4 py-3 sm:py-4 border-b border-gray-200">
-        <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 leading-tight truncate max-w-[200px] sm:max-w-[300px] lg:max-w-none">
+      <div className="flex items-center justify-between px-3 sm:px-4 py-3 sm:py-4 border-b border-gray-200 dark:border-[#2e3548]">
+        <h1 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 dark:text-gray-100 leading-tight truncate max-w-[200px] sm:max-w-[300px] lg:max-w-none">
           {project.name}
         </h1>
 
@@ -305,7 +305,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           {canAccessSettings ? (
             <Link
               href={`/projects/${projectId}/settings`}
-              className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 transition-colors"
+              className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-gray-200 transition-colors"
               title="Project Settings"
             >
               <Settings size={20} />
@@ -330,7 +330,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
       </div>
 
       {/* View Navigation Bar */}
-      <div className="px-3 sm:px-4 py-3 border-b border-gray-100">
+      <div className="px-3 sm:px-4 py-3 border-b border-gray-100 dark:border-[#2e3548]">
         <ViewNav
           activeView={viewMode as ViewType}
           onViewChange={(view) => setViewMode(view as ViewMode)}
@@ -343,7 +343,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
       {/* Filter Panel - shown when filter is open */}
       {isFilterOpen && (
-        <div className="px-3 sm:px-4 py-3 border-b border-gray-100 bg-gray-50/50">
+        <div className="px-3 sm:px-4 py-3 border-b border-gray-100 dark:border-[#2e3548] bg-gray-50/50 dark:bg-[#191f2c]">
           <FilterPanel
             filters={filters}
             onFiltersChange={setFilters}

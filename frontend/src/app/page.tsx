@@ -1,7 +1,6 @@
 import {
   Header,
   Hero,
-  LogoBar,
   Features,
   ProductShowcase,
   Pricing,
@@ -16,7 +15,6 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <LogoBar />
         <Features />
         <ProductShowcase />
         <Pricing />

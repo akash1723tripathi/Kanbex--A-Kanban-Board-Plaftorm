@@ -16,9 +16,6 @@ export const metadata: Metadata = {
     'efficiency',
   ],
   authors: [{ name: 'Kanbex' }],
-  icons: {
-    icon: '/favicon.ico',
-  },
 };
 
 export default function RootLayout({

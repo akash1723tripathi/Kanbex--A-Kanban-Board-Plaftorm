@@ -126,16 +126,6 @@ export interface PricingSection {
 }
 
 // ============================================
-// COMPANIES / LOGO BAR
-// ============================================
-
-export interface Company {
-  id: string;
-  name: string;
-  logo?: string;
-}
-
-// ============================================
 // PRODUCT SHOWCASE
 // ============================================
 

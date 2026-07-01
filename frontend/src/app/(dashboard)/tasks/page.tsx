@@ -103,11 +103,11 @@ export default function TasksPage() {
   // Error state
   if (isError) {
     return (
-      <div className="flex flex-col items-center justify-center py-16 bg-white rounded-card border border-gray-200">
-        <div className="p-4 bg-red-50 rounded-full mb-4">
+      <div className="flex flex-col items-center justify-center py-16 bg-white dark:bg-[#1e2533] rounded-card border border-gray-200 dark:border-[#2e3548]">
+        <div className="p-4 bg-red-50 dark:bg-red-950/20 rounded-full mb-4">
           <ListTodo className="size-8 text-red-400" />
         </div>
-        <h3 className="text-base font-medium text-gray-800 mb-1">
+        <h3 className="text-base font-medium text-gray-800 dark:text-gray-200 mb-1">
           Failed to load tasks
         </h3>
         <p className="text-sm text-gray-500 mb-4">
@@ -277,11 +277,11 @@ export default function TasksPage() {
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-12 bg-white rounded-card border border-gray-200">
-            <div className="p-4 bg-green-50 rounded-full mb-4">
+          <div className="flex flex-col items-center justify-center py-12 bg-white dark:bg-[#1e2533] rounded-card border border-gray-200 dark:border-[#2e3548]">
+            <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-full mb-4">
               <CheckCircle2 className="size-8 text-green-500" />
             </div>
-            <h3 className="text-base font-medium text-gray-800 mb-1">
+            <h3 className="text-base font-medium text-gray-800 dark:text-gray-200 mb-1">
               {search || selectedPriority || selectedProjectId
                 ? 'No tasks match your filters'
                 : 'All caught up!'}
@@ -298,7 +298,7 @@ export default function TasksPage() {
         {completedTasks.length > 0 && (
           <Collapsible open={completedOpen} onOpenChange={setCompletedOpen}>
             <CollapsibleTrigger asChild>
-              <button className="flex items-center gap-2 w-full p-3 text-left text-sm text-gray-600 hover:text-gray-800 hover:bg-gray-50 rounded-lg transition-colors">
+              <button className="flex items-center gap-2 w-full p-3 text-left text-sm text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
                 {completedOpen ? (
                   <ChevronDown className="h-4 w-4" />
                 ) : (

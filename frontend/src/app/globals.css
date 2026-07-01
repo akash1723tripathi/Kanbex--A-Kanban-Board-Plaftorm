@@ -508,3 +508,51 @@
     /* Low priority events get subtle green styling */
   }
 }
+
+/* ========================================
+   DARK MODE OVERRIDES & SYSTEM POLISH
+   ======================================== */
+
+/* Dark Mode input-base styling */
+.dark .input-base {
+  background-color: #1e2533;
+  border-color: #2e3548;
+  color: #e8ecf2;
+}
+
+.dark .input-base:focus {
+  border-color: #4b5a73;
+  --tw-ring-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark .input-base:disabled {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  color: #4b5563 !important;
+}
+
+/* Dark Mode general labels styling */
+.dark label {
+  color: #c1cad7 !important;
+}
+
+/* Dark Mode board column header configuration color overrides */
+.dark .bg-label-purple-bg { background-color: rgba(139, 92, 246, 0.15) !important; }
+.dark .text-label-purple-text { color: #c084fc !important; }
+.dark .bg-label-yellow-bg { background-color: rgba(245, 158, 11, 0.15) !important; }
+.dark .text-label-yellow-text { color: #fbbf24 !important; }
+.dark .bg-label-green-bg { background-color: rgba(16, 185, 129, 0.15) !important; }
+.dark .text-label-green-text { color: #34d399 !important; }
+.dark .bg-label-blue-bg { background-color: rgba(59, 130, 246, 0.15) !important; }
+.dark .text-label-blue-text { color: #60a5fa !important; }
+.dark .bg-label-pink-bg { background-color: rgba(236, 72, 153, 0.15) !important; }
+.dark .text-label-pink-text { color: #f472b6 !important; }
+.dark .bg-label-red-bg { background-color: rgba(239, 68, 68, 0.15) !important; }
+.dark .text-label-red-text { color: #f87171 !important; }
+
+/* Custom board column backgrounds from config */
+.dark .bg-\[\#F5F3FF\] { background-color: rgba(139, 92, 246, 0.15) !important; }
+.dark .text-\[\#8B5CF6\] { color: #c084fc !important; }
+.dark .bg-\[\#DDD6FE\] { background-color: rgba(139, 92, 246, 0.25) !important; }
+.dark .bg-\[\#FDE68A\] { background-color: rgba(245, 158, 11, 0.25) !important; }
+.dark .bg-\[\#A7F3D0\] { background-color: rgba(16, 185, 129, 0.25) !important; }
+

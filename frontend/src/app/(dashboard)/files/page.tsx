@@ -256,11 +256,11 @@ export default function FilesPage() {
         </div>
 
         {/* Empty state */}
-        <div className="flex flex-col items-center justify-center py-16 bg-white rounded-card border border-gray-200">
-          <div className="p-4 bg-gray-50 rounded-full mb-4">
+        <div className="flex flex-col items-center justify-center py-16 bg-white dark:bg-[#1e2533] rounded-card border border-gray-200 dark:border-[#2e3548]">
+          <div className="p-4 bg-gray-50 dark:bg-white/5 rounded-full mb-4">
             <Folder className="size-8 text-gray-400" />
           </div>
-          <h3 className="text-base font-medium text-gray-800 mb-1">
+          <h3 className="text-base font-medium text-gray-800 dark:text-gray-200 mb-1">
             No files yet
           </h3>
           <p className="text-sm text-gray-500">
@@ -308,11 +308,11 @@ export default function FilesPage() {
         />
 
         {/* Empty state */}
-        <div className="flex flex-col items-center justify-center py-16 bg-white rounded-card border border-gray-200">
-          <div className="p-4 bg-gray-50 rounded-full mb-4">
+        <div className="flex flex-col items-center justify-center py-16 bg-white dark:bg-[#1e2533] rounded-card border border-gray-200 dark:border-[#2e3548]">
+          <div className="p-4 bg-gray-50 dark:bg-white/5 rounded-full mb-4">
             <Search className="size-8 text-gray-400" />
           </div>
-          <h3 className="text-base font-medium text-gray-800 mb-1">
+          <h3 className="text-base font-medium text-gray-800 dark:text-gray-200 mb-1">
             No files match your filters
           </h3>
           <p className="text-sm text-gray-500 mb-4">

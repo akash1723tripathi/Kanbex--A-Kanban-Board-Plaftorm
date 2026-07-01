@@ -85,11 +85,11 @@ export function ViewNav({
                 'flex items-center gap-1.5 px-2 sm:px-3 py-2 rounded-lg text-base font-normal transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2',
                 isActive
-                  ? 'bg-white border border-gray-100 text-gray-700 shadow-sm'
-                  : 'text-gray-700 hover:bg-gray-50'
+                  ? 'bg-white dark:bg-[#1e2533] border border-gray-100 dark:border-[#2e3548] text-gray-700 dark:text-gray-200 shadow-sm dark:shadow-none'
+                  : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5'
               )}
             >
-              <Icon size={20} className="text-gray-700" />
+              <Icon size={20} className="text-gray-700 dark:text-gray-300" />
               {/* Hide label on mobile, show on sm+ */}
               <span className="hidden sm:inline">{label}</span>
             </button>
@@ -110,9 +110,9 @@ export function ViewNav({
             value={searchValue}
             onChange={(e) => handleSearchChange(e.target.value)}
             className={cn(
-              'w-full sm:w-[200px] lg:w-[270px] h-10 pl-10 sm:pl-11 pr-4 rounded-md border border-gray-200',
-              'text-sm text-gray-700 placeholder:text-gray-400',
-              'focus:outline-none focus:ring-2 focus:ring-gray-300 focus:border-transparent',
+              'w-full sm:w-[200px] lg:w-[270px] h-10 pl-10 sm:pl-11 pr-4 rounded-md border border-gray-200 dark:border-[#2e3548] bg-white dark:bg-[#1e2533]',
+              'text-sm text-gray-700 dark:text-gray-200 placeholder:text-gray-400',
+              'focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-white/5 focus:border-transparent',
               'transition-all duration-200'
             )}
             aria-label="Search tasks"
@@ -126,15 +126,15 @@ export function ViewNav({
           className={cn(
             'flex items-center justify-center gap-1.5 px-2.5 sm:px-3 py-2 rounded-md border',
             'text-sm font-normal',
-            'hover:bg-gray-50 transition-all duration-200',
+            'hover:bg-gray-50 dark:hover:bg-white/5 transition-all duration-200',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2',
             hasActiveFilters
-              ? 'border-primary-300 bg-primary-50 text-primary-700'
-              : 'border-gray-200 text-gray-800'
+              ? 'border-primary-300 bg-primary-50 text-primary-700 dark:border-primary-900/50 dark:bg-primary-950/20 dark:text-primary-400'
+              : 'border-gray-200 dark:border-[#2e3548] text-gray-800 dark:text-gray-200 bg-white dark:bg-[#1e2533]'
           )}
           aria-label="Open filters"
         >
-          <FilterFunnelIcon size={20} className={hasActiveFilters ? 'text-primary-600' : 'text-gray-800'} />
+          <FilterFunnelIcon size={20} className={hasActiveFilters ? 'text-primary-600 dark:text-primary-400' : 'text-gray-800 dark:text-gray-200'} />
           {/* Hide label on mobile, show on sm+ */}
           <span className="hidden sm:inline">Filter</span>
           {hasActiveFilters && (
