@@ -95,7 +95,7 @@ export function FloatingTaskCard({ variant = 'floating' }: FloatingTaskCardProps
         whileInView={{ opacity: 1, x: 0, y: 0 }}
         viewport={scrollViewport}
         transition={{ duration: 0.8, ease: easing.smooth, delay: 0.3 }}
-        className="absolute left-0 top-[80px] z-10 w-[280px]"
+        className="absolute left-0  top-[20px] z-10 w-[280px]"
       >
         {content}
       </motion.div>

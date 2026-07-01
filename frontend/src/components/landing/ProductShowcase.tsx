@@ -40,7 +40,6 @@ export function ProductShowcase() {
         <div className="hidden lg:block">
           <div className="relative px-16">
             {/* Floating Cards - Absolute positioned */}
-            <FloatingTaskCard variant="floating" />
             <FloatingProgressCard variant="floating" />
             <FloatingMemberDialog variant="floating" />
 
@@ -52,6 +51,7 @@ export function ProductShowcase() {
               transition={{ duration: 0.8, ease: easing.smooth, delay: 0.2 }}
               className="relative w-full max-w-[1100px] mx-auto"
             >
+              <FloatingTaskCard variant="floating" />
               <Image
                 src="/images/showcase/Macbook.png"
                 alt="Kanbex Dashboard on MacBook"
