@@ -1,201 +1,129 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { TestimonialCard, VideoTestimonialCard } from './testimonials/index';
+import Image from 'next/image';
 import { testimonialsSection } from '@/data/landing/testimonials';
-import { easing, scrollViewport } from '@/lib/animations';
 
-// Helper to get testimonial by ID with default fallback
-const getTestimonial = (id: string) => {
-  const t = testimonialsSection.testimonials.find((t) => t.id === id);
-  const defaultTestimonial = {
-    quote: '',
-    author: {
-      name: '',
-      role: '',
-      avatar: '',
-    },
-    thumbnailSrc: '',
-    isVideo: false,
-  };
+// ---------- types ----------
+interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  avatar?: string;
+  quote: string;
+}
 
-  if (!t) return defaultTestimonial;
+// ---------- card ----------
+function TestimonialCard({ t }: { t: Testimonial }) {
+  const avatarSrc = t.avatar ?? `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&size=200`;
 
-  return {
-    quote: t.quote ? `"${t.quote}"` : '',
-    author: {
-      name: t.name,
-      role: `${t.role} – ${t.company}`,
-      avatar: t.avatar || `/images/testimonials/avatar-${t.id}.png`,
-    },
-    thumbnailSrc: t.videoThumbnail || '/images/testimonials/video-bg.png',
-    isVideo: t.isVideo || false,
-  };
-};
+  return (
+    <div className="bg-linear-to-b from-[#020204] to-[#191130] border border-gray-200 rounded-xl p-6 mb-4 hover:border-gray-300 hover:shadow-sm transition-all duration-300">
+      {/* Quote icon */}
+      <div className="mb-4">
+        <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#6B7280" strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 13.056c.464 0 .91-.131 1.237-.364.329-.234.513-.55.513-.88v-3.73c0-.33-.184-.647-.513-.88C7.91 6.97 7.464 6.838 7 6.838c-.232 0-.455-.066-.619-.182-.164-.117-.256-.275-.256-.44v-.622c0-.33.184-.646.513-.879.328-.233.773-.364 1.237-.364.232 0 .455-.066.619-.182.164-.117.256-.275.256-.44V2.485c0-.165-.092-.323-.256-.44a1.1 1.1 0 0 0-.619-.181c-1.392 0-2.728.393-3.712 1.092-.985.7-1.538 1.649-1.538 2.638v6.218c0 .33.184.646.513.88.328.233.773.364 1.237.364zm9.83 0c.465 0 .91-.131 1.238-.364.328-.234.513-.55.513-.88v-3.73c0-.33-.184-.647-.513-.88-.328-.233-.773-.364-1.237-.364-.232 0-.455-.066-.619-.182-.164-.117-.256-.275-.256-.44v-.622c0-.33.184-.646.512-.879.329-.233.774-.364 1.238-.364.232 0 .454-.066.619-.182.164-.117.256-.275.256-.44V2.485c0-.165-.092-.323-.256-.44a1.1 1.1 0 0 0-.62-.181c-1.391 0-2.727.393-3.711 1.092-.985.7-1.538 1.649-1.538 2.638v6.218c0 .33.184.646.512.88.329.233.774.364 1.238.364z" />
+          </g>
+        </svg>
+      </div>
 
-// Get testimonials for easier access
-const testimonials = {
-  octavia: getTestimonial('octavia'),
-  ravi: getTestimonial('ravi'),
-  daniel: getTestimonial('daniel'),
-  zainab: getTestimonial('zainab'),
-  layla: getTestimonial('layla'),
-  areeba: getTestimonial('areeba'),
-};
+      {/* Description */}
+      <p className="text-sm text-gray-500 mb-5 leading-relaxed">{t.quote}</p>
 
+      {/* Author */}
+      <div className="flex items-center gap-3">
+        <div className="relative size-9 flex-shrink-0">
+          <Image
+            src={avatarSrc}
+            alt={t.name}
+            fill
+            sizes="36px"
+            className="object-cover rounded-full border border-gray-200"
+            unoptimized
+          />
+        </div>
+        <div>
+          <p className="text-sm font-medium text-gray-800">{t.name}</p>
+          <p className="text-xs text-gray-400">{t.role} – {t.company}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ---------- scrolling column ----------
+function ScrollColumn({
+  items,
+  animClass,
+}: {
+  items: Testimonial[];
+  animClass: string;
+}) {
+  // duplicate items so the scroll loops seamlessly
+  const doubled = [...items, ...items];
+  return (
+    <div className={animClass}>
+      {doubled.map((t, idx) => (
+        <TestimonialCard key={`${t.id}-${idx}`} t={t} />
+      ))}
+    </div>
+  );
+}
+
+// ---------- section ----------
 export function Testimonials() {
+  const all = testimonialsSection.testimonials as Testimonial[];
+
+  // Split 9 testimonials into 3 groups of 3
+  const col1 = all.slice(0, 3);
+  const col2 = all.slice(3, 6);
+  const col3 = all.slice(6, 9);
+
   return (
     <section className="bg-gray-50 py-16 lg:py-[120px] px-4 sm:px-6 lg:px-[100px]">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-12 lg:gap-[80px]">
+      {/* scroll animations */}
+      <style>{`
+        @keyframes scroll-up {
+          0%   { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+        .kanbex-scroll-1 { animation: scroll-up 28s linear infinite; }
+        .kanbex-scroll-2 { animation: scroll-up 22s linear infinite; }
+        .kanbex-scroll-3 { animation: scroll-up 32s linear infinite; }
+      `}</style>
+
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-12 lg:gap-[72px]">
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={scrollViewport}
-            transition={{ duration: 0.7, ease: easing.smooth }}
-            className="text-3xl sm:text-4xl lg:text-[48px] font-medium text-black leading-[1.2] capitalize max-w-[458px]"
-          >
+          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-medium text-black leading-[1.2] capitalize max-w-[460px]">
             {testimonialsSection.header}
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={scrollViewport}
-            transition={{ duration: 0.7, ease: easing.smooth, delay: 0.1 }}
-            className="text-lg lg:text-xl text-gray-500/70 leading-[1.5] max-w-[494px]"
-          >
+          </h2>
+          <p className="text-lg lg:text-xl text-gray-500/70 leading-[1.5] max-w-[494px]">
             {testimonialsSection.description}
-          </motion.p>
+          </p>
         </div>
 
-        {/* Testimonials Grid */}
-        {/* Desktop: 3 asymmetric columns */}
-        <div className="hidden lg:flex gap-8 justify-center">
-          {/* Column 1 - Two equal height cards */}
-          <div className="flex flex-col gap-8 w-[392px] h-[878px]">
-            <TestimonialCard
-              quote={testimonials.octavia.quote}
-              author={testimonials.octavia.author}
-              className="flex-1 min-h-0"
-              index={0}
-            />
-            <TestimonialCard
-              quote={testimonials.ravi.quote}
-              author={testimonials.ravi.author}
-              className="flex-1 min-h-0"
-              index={1}
-            />
-          </div>
+        {/* Scrolling grid */}
+        <div className="relative w-full overflow-hidden">
+          {/* top & bottom fade overlays */}
+          <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-gray-50 to-transparent z-10 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-gray-50 to-transparent z-10 pointer-events-none" />
 
-          {/* Column 2 - Short card + Video card */}
-          <div className="flex flex-col gap-8 w-[392px]">
-            <TestimonialCard
-              quote={testimonials.daniel.quote}
-              author={testimonials.daniel.author}
-              className="h-[325px]"
-              index={2}
-            />
-            <VideoTestimonialCard
-              author={testimonials.zainab.author}
-              thumbnailSrc={testimonials.zainab.thumbnailSrc}
-              className="h-[521px]"
-              index={3}
-            />
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-[620px] overflow-hidden">
+            {/* column 1 – always visible */}
+            <ScrollColumn items={col1} animClass="kanbex-scroll-1" />
 
-          {/* Column 3 - Two equal height cards */}
-          <div className="flex flex-col gap-8 w-[392px] h-[878px]">
-            <TestimonialCard
-              quote={testimonials.layla.quote}
-              author={testimonials.layla.author}
-              className="flex-1 min-h-0"
-              index={4}
-            />
-            <TestimonialCard
-              quote={testimonials.areeba.quote}
-              author={testimonials.areeba.author}
-              className="flex-1 min-h-0"
-              index={5}
-            />
-          </div>
-        </div>
+            {/* column 2 – tablet + desktop */}
+            <div className="hidden md:block">
+              <ScrollColumn items={col2} animClass="kanbex-scroll-2" />
+            </div>
 
-        {/* Tablet: 2 columns */}
-        <div className="hidden md:flex lg:hidden gap-6 justify-center">
-          {/* Column 1 */}
-          <div className="flex flex-col gap-6 flex-1">
-            <TestimonialCard
-              quote={testimonials.octavia.quote}
-              author={testimonials.octavia.author}
-              index={0}
-            />
-            <TestimonialCard
-              quote={testimonials.daniel.quote}
-              author={testimonials.daniel.author}
-              index={1}
-            />
-            <TestimonialCard
-              quote={testimonials.layla.quote}
-              author={testimonials.layla.author}
-              index={2}
-            />
+            {/* column 3 – desktop only */}
+            <div className="hidden lg:block">
+              <ScrollColumn items={col3} animClass="kanbex-scroll-3" />
+            </div>
           </div>
-
-          {/* Column 2 */}
-          <div className="flex flex-col gap-6 flex-1">
-            <TestimonialCard
-              quote={testimonials.ravi.quote}
-              author={testimonials.ravi.author}
-              index={3}
-            />
-            <VideoTestimonialCard
-              author={testimonials.zainab.author}
-              thumbnailSrc={testimonials.zainab.thumbnailSrc}
-              className="h-[400px]"
-              index={4}
-            />
-            <TestimonialCard
-              quote={testimonials.areeba.quote}
-              author={testimonials.areeba.author}
-              index={5}
-            />
-          </div>
-        </div>
-
-        {/* Mobile: Single column, stacked */}
-        <div className="flex md:hidden flex-col gap-6">
-          <TestimonialCard
-            quote={testimonials.octavia.quote}
-            author={testimonials.octavia.author}
-            index={0}
-          />
-          <TestimonialCard
-            quote={testimonials.ravi.quote}
-            author={testimonials.ravi.author}
-            index={1}
-          />
-          <TestimonialCard
-            quote={testimonials.daniel.quote}
-            author={testimonials.daniel.author}
-            index={2}
-          />
-          <VideoTestimonialCard
-            author={testimonials.zainab.author}
-            thumbnailSrc={testimonials.zainab.thumbnailSrc}
-            className="h-[350px] sm:h-[400px]"
-            index={3}
-          />
-          <TestimonialCard
-            quote={testimonials.layla.quote}
-            author={testimonials.layla.author}
-            index={4}
-          />
-          <TestimonialCard
-            quote={testimonials.areeba.quote}
-            author={testimonials.areeba.author}
-            index={5}
-          />
         </div>
       </div>
     </section>

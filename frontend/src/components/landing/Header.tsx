@@ -43,6 +43,7 @@ function NavbarLink({ label, href }: { label: string; href: string }) {
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [macbookTransitionActive, setMacbookTransitionActive] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +51,19 @@ export function Header() {
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const transition = document.querySelector('[data-macbook-transition]');
+    if (!transition) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setMacbookTransitionActive(entry.isIntersecting),
+      { threshold: 0 },
+    );
+
+    observer.observe(transition);
+    return () => observer.disconnect();
   }, []);
 
   const isPill = scrolled && !mobileMenuOpen;
@@ -62,7 +76,7 @@ export function Header() {
           : mobileMenuOpen
             ? 'w-full bg-white border-b border-gray-100'
             : 'w-full max-w-[1440px] bg-transparent border-none'
-      }`}
+      } ${macbookTransitionActive && !mobileMenuOpen ? '-translate-y-full opacity-0 pointer-events-none' : ''}`}
     >
       <div
         className={`w-full flex items-center justify-between transition-all duration-500 ${
@@ -91,7 +105,7 @@ export function Header() {
         <div className="hidden lg:block">
           <Link
             href={headerCTA.href}
-            className={`inline-flex items-center justify-center bg-gray-800 text-white px-6 py-2.5 text-sm font-medium hover:bg-gray-700 transition-all duration-500 ${
+            className={`inline-flex items-center justify-center bg-[#5748b6] text-white px-6 py-2.5 text-sm font-medium hover:bg-[#493b9e] transition-all duration-500 ${
               isPill ? 'rounded-full' : 'rounded-lg'
             }`}
           >
@@ -141,7 +155,7 @@ export function Header() {
               <motion.div variants={mobileMenuItemVariants}>
                 <Link
                   href={headerCTA.href}
-                  className="block w-full text-center bg-gray-800 text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors mt-4"
+                  className="block w-full text-center bg-[#5748b6] text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-[#493b9e] transition-colors mt-4"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {headerCTA.text}
