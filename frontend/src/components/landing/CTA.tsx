@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ctaContent } from '@/data/landing/cta';
 import { easing, scrollViewport, fadeInUp as baseFadeInUp } from '@/lib/animations';
+import { SpecularButton } from '@/components/ui';
 
 export function CTA() {
   return (
@@ -51,12 +51,15 @@ export function CTA() {
               viewport={scrollViewport}
               transition={{ duration: 0.7, ease: easing.smooth, delay: 0.3 }}
             >
-              <Link
-                href={ctaContent.buttonHref}
-                className="inline-flex items-center justify-center bg-white text-[#262730] px-6 py-2.5 rounded-[7px] text-sm font-medium capitalize border border-gray-200 hover:bg-gray-50 transition-colors"
+              <SpecularButton
+                size="sm"
+                tint="#806de5"
+                baseColor="#563bb2"
+                autoAnimate
+                onClick={() => { window.location.href = ctaContent.buttonHref; }}
               >
                 {ctaContent.buttonText}
-              </Link>
+              </SpecularButton>
             </motion.div>
           </div>
         </motion.div>
