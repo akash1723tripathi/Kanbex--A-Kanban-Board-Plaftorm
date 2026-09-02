@@ -37,7 +37,10 @@ export const MacbookScroll = ({
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end end"],
+    // Track the animation while this section moves through the viewport.
+    // Ending at the section's top keeps the animation tied to normal page
+    // scrolling instead of making the laptop feel pinned.
+    offset: ["start start", "end start"],
   });
 
   const [isMobile, setIsMobile] = useState(false);
@@ -50,29 +53,29 @@ export const MacbookScroll = ({
 
   const scaleX = useTransform(
     scrollYProgress,
-    [0, 0.4],
-    [1.2, isMobile ? 1 : 1.4]
+    [0, 0.3],
+    [1.2, isMobile ? 1 : 1.5]
   );
   const scaleY = useTransform(
     scrollYProgress,
-    [0, 0.4],
-    [0.6, isMobile ? 1 : 1.4]
+    [0, 0.3],
+    [0.6, isMobile ? 1 : 1.5]
   );
-  const translate = useTransform(scrollYProgress, [0, 0.4], [0, 0]);
+  const translate = useTransform(scrollYProgress, [0, 1], [0, 1500]);
   const rotate = useTransform(
     scrollYProgress,
-    [0, 0.4],
-    [-28, 0]
+    [0.1, 0.12, 0.3],
+    [-28, -28, 0]
   );
-  const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, -30]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0.3]);
+  const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   return (
     <div
       ref={ref}
-      className="relative min-h-[220vh] w-full"
+      className="relative min-h-[200vh] w-full overflow-visible px-0 pt-8 md:pt-10 pb-20"
     >
-      <div className="sticky top-12 md:top-20 flex flex-col items-center justify-start py-4 overflow-visible">
+      <div className="flex flex-col items-center justify-start overflow-visible">
         {title && (
           <motion.div
             style={{
@@ -85,7 +88,7 @@ export const MacbookScroll = ({
           </motion.div>
         )}
 
-        <div className="shrink-0 scale-[0.38] transform [perspective:800px] sm:scale-55 md:scale-85 lg:scale-95 flex flex-col items-center justify-start">
+        <div className="shrink-0 scale-[0.35] transform [perspective:800px] sm:scale-50 md:scale-100 flex flex-col items-center justify-start pt-4">
           {/* Lid */}
           <Lid
             src={src}
@@ -164,13 +167,13 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2 overflow-hidden"
+        className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
         <img
           src={src as string}
           alt="Kanbex Dashboard"
-          className="absolute inset-1.5 h-[calc(100%-0.75rem)] w-[calc(100%-0.75rem)] rounded-lg object-cover object-left-top"
+          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
         />
       </motion.div>
     </div>
