@@ -17,7 +17,7 @@ export function CTA() {
           transition={{ duration: 0.8, ease: easing.smooth }}
           className="relative overflow-hidden bg-gray-900 rounded-[36px] px-6 py-12 md:px-12 md:py-16 lg:p-20"
         >
-          <RippleDistortion strength={0.12} brushSize={180} rings={3} tint="#806de5" tintAmount={0.16} glint={0.18} />
+          <RippleDistortion src="/images/landing/newsletter-bg-image.png" strength={0.12} brushSize={180} rings={3} tint="#000000" tintAmount={0.16} glint={0.18} />
           {/* Content Container */}
           <div className="relative z-10 flex flex-col items-center gap-6 max-w-[936px] mx-auto">
             {/* Heading */}
@@ -54,8 +54,8 @@ export function CTA() {
             >
               <SpecularButton
                 size="sm"
-                tint="#806de5"
-                baseColor="#563bb2"
+                tint="#000000"
+                baseColor="#000000"
                 autoAnimate
                 onClick={() => { window.location.href = ctaContent.buttonHref; }}
               >
