@@ -18,18 +18,18 @@ function TestimonialCard({ t }: { t: Testimonial }) {
   const avatarSrc = t.avatar ?? `https://ui-avatars.com/api/?name=${encodeURIComponent(t.name)}&size=200`;
 
   return (
-    <div className="bg-linear-to-b from-[#020204] to-[#191130] border border-gray-200 rounded-xl p-6 mb-4 hover:border-gray-300 hover:shadow-sm transition-all duration-300">
+    <div className="bg-gradient-to-b from-white via-[#fcfaff] to-[#f1ebff] border border-[#ddd0f7] rounded-xl p-6 mb-4 hover:border-[#c5a9f2] hover:shadow-[0_8px_30px_rgba(124,58,237,0.12)] transition-all duration-300">
       {/* Quote icon */}
       <div className="mb-4">
         <svg width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#6B7280" strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <g stroke="#6B7280" strokeOpacity="0.65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M7 13.056c.464 0 .91-.131 1.237-.364.329-.234.513-.55.513-.88v-3.73c0-.33-.184-.647-.513-.88C7.91 6.97 7.464 6.838 7 6.838c-.232 0-.455-.066-.619-.182-.164-.117-.256-.275-.256-.44v-.622c0-.33.184-.646.513-.879.328-.233.773-.364 1.237-.364.232 0 .455-.066.619-.182.164-.117.256-.275.256-.44V2.485c0-.165-.092-.323-.256-.44a1.1 1.1 0 0 0-.619-.181c-1.392 0-2.728.393-3.712 1.092-.985.7-1.538 1.649-1.538 2.638v6.218c0 .33.184.646.513.88.328.233.773.364 1.237.364zm9.83 0c.465 0 .91-.131 1.238-.364.328-.234.513-.55.513-.88v-3.73c0-.33-.184-.647-.513-.88-.328-.233-.773-.364-1.237-.364-.232 0-.455-.066-.619-.182-.164-.117-.256-.275-.256-.44v-.622c0-.33.184-.646.512-.879.329-.233.774-.364 1.238-.364.232 0 .454-.066.619-.182.164-.117.256-.275.256-.44V2.485c0-.165-.092-.323-.256-.44a1.1 1.1 0 0 0-.62-.181c-1.391 0-2.727.393-3.711 1.092-.985.7-1.538 1.649-1.538 2.638v6.218c0 .33.184.646.512.88.329.233.774.364 1.238.364z" />
           </g>
         </svg>
       </div>
 
       {/* Description */}
-      <p className="text-sm text-gray-500 mb-5 leading-relaxed">{t.quote}</p>
+      <p className="text-sm text-[#64748B] mb-5 leading-relaxed">{t.quote}</p>
 
       {/* Author */}
       <div className="flex items-center gap-3">
@@ -39,13 +39,13 @@ function TestimonialCard({ t }: { t: Testimonial }) {
             alt={t.name}
             fill
             sizes="36px"
-            className="object-cover rounded-full border border-gray-200"
+            className="object-cover rounded-full border border-[#e5e7eb]"
             unoptimized
           />
         </div>
         <div>
-          <p className="text-sm font-medium text-gray-800">{t.name}</p>
-          <p className="text-xs text-gray-400">{t.role} – {t.company}</p>
+          <p className="text-sm font-medium text-[#374151]">{t.name}</p>
+          <p className="text-xs text-[#7C6A9B]">{t.role} – {t.company}</p>
         </div>
       </div>
     </div>
