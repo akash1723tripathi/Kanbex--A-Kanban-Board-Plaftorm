@@ -16,14 +16,16 @@ export function ProductShowcase() {
       <div className="overflow-clip">
         <MacbookScroll
           title={
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-800 leading-tight">
-              {productShowcaseContent.header.line1}
-              <br />
-              {productShowcaseContent.header.line2}
-              <p className="mt-4 lg:mt-2 text-base lg:text-lg text-gray-500 max-w-[560px] mx-auto leading-relaxed font-normal">
+            <div className="max-w-[800px] mx-auto text-center px-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-gray-800 leading-tight mb-4">
+                {productShowcaseContent.header.line1}
+                <br />
+                {productShowcaseContent.header.line2}
+              </h2>
+              <p className="text-base lg:text-lg text-gray-500 max-w-[560px] mx-auto leading-relaxed font-normal">
                 {productShowcaseContent.description}
               </p>
-            </span>
+            </div>
           }
           src="/images/showcase/mockup.png"
           showGradient={false}
