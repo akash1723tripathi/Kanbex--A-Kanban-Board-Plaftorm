@@ -71,9 +71,22 @@ export interface Feature {
 }
 
 export interface FeaturesSection {
+  eyebrow: string;
   header: string;
   description: string;
+  reassurance: string;
   features: Feature[];
+  secondary: {
+    dark: {
+      eyebrow: string;
+      title: string;
+      description: string;
+    };
+    light: {
+      title: string;
+      description: string;
+    };
+  };
   preview: {
     tags: string[];
     members: TeamMemberPreview[];
