@@ -8,10 +8,12 @@ import {
   CTA,
   Footer,
 } from '@/components/landing';
+import { ServerWarmup } from '@/components/landing/ServerWarmup';
 
 export default function HomePage() {
   return (
     <>
+      <ServerWarmup />
       <Header />
       <main>
         <Hero />
