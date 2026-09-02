@@ -15,6 +15,7 @@ import {
 import Link from 'next/link';
 import { featuresSection } from '@/data/landing/features';
 import { easing, getStaggerDelay, scrollViewport } from '@/lib/animations';
+import { RippleDistortion } from '@/components/ui';
 
 const featureIcons: Record<string, LucideIcon> = {
   precision: ClipboardCheck,
@@ -133,6 +134,7 @@ export function Features() {
             transition={{ duration: 0.7, ease: easing.smooth }}
             className="relative overflow-hidden rounded-[28px] bg-[#201e1b] p-7 text-white md:p-10"
           >
+            <RippleDistortion strength={0.11} brushSize={145} rings={3} tint="#806de5" tintAmount={0.15} glint={0.14} />
             {/* Restricted wrapper to ~50% width for eyebrow & title */}
             <div className="relative z-10 max-w-full md:max-w-[48%]">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/75">
@@ -146,7 +148,7 @@ export function Features() {
 
             {/* Floating Mockup Card */}
             <div
-              className="relative mt-10 h-[172px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] p-4 md:absolute md:top-10 md:right-5 md:mt-0 md:h-[190px] md:w-[285px]"
+              className="relative z-10 mt-10 h-[172px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] p-4 md:absolute md:top-10 md:right-5 md:mt-0 md:h-[190px] md:w-[285px]"
               aria-hidden="true"
             >
               <div className="flex items-center justify-between text-[10px] text-white/45">

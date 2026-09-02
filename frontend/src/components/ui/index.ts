@@ -4,3 +4,5 @@ export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
 export { Input } from './input';
 export { Label } from './label';
 export { RotatingText, type RotatingTextRef, type RotatingTextProps } from './RotatingText';
+
+export { default as RippleDistortion } from './RippleDistortion';
