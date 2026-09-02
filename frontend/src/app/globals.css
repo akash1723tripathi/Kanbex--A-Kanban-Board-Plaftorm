@@ -556,3 +556,49 @@
 .dark .bg-\[\#FDE68A\] { background-color: rgba(245, 158, 11, 0.25) !important; }
 .dark .bg-\[\#A7F3D0\] { background-color: rgba(16, 185, 129, 0.25) !important; }
 
+
+/* Auth page route transitions */
+@keyframes auth-image-slide-in {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes auth-form-slide-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes auth-image-slide-out {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+@keyframes auth-form-slide-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+.auth-page--entering .auth-image-panel {
+  animation: auth-image-slide-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.auth-page--entering .auth-form-panel {
+  animation: auth-form-slide-in 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.auth-page--exiting .auth-image-panel {
+  animation: auth-image-slide-out 520ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+.auth-page--exiting .auth-form-panel {
+  animation: auth-form-slide-out 520ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-page--entering .auth-image-panel,
+  .auth-page--entering .auth-form-panel,
+  .auth-page--exiting .auth-image-panel,
+  .auth-page--exiting .auth-form-panel {
+    animation-duration: 1ms;
+  }
+}

@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/icons/Logo';
 import { headerNavLinks, headerCTA } from '@/data/navigation/header';
 import { RotatingText, type RotatingTextRef } from '@/components/ui';
+import { SpecularButton } from '@/components/ui';
 import {
   mobileMenuVariants,
   mobileMenuItemVariants,
@@ -70,27 +71,23 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 flex flex-col ${
-        isPill
+      className={`fixed top-0 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 flex flex-col ${isPill
           ? 'w-[calc(100%-32px)] md:w-[calc(100%-64px)] max-w-[1240px] bg-white/80 backdrop-blur-md border border-gray-100 rounded-full mt-4 shadow-lg'
           : mobileMenuOpen
-            ? 'w-full bg-white border-b border-gray-100'
-            : 'w-full max-w-[1440px] bg-transparent border-none'
-      } ${macbookTransitionActive && !mobileMenuOpen ? '-translate-y-full opacity-0 pointer-events-none' : ''}`}
+            ? 'w-full bg-white/90 backdrop-blur-md border-b border-gray-100'
+            : 'w-full max-w-[1440px]  backdrop-blur-md border-b border-gray-100/20'
+        } ${macbookTransitionActive && !mobileMenuOpen ? '-translate-y-full opacity-0 pointer-events-none' : ''}`}
     >
       <div
-        className={`w-full flex items-center justify-between transition-all duration-500 ${
-          isPill
+        className={`w-full flex items-center justify-between transition-all duration-500 ${isPill
             ? 'pl-10 pr-8 h-[64px]'
             : 'px-6 lg:px-[100px] h-[82px]'
-        }`}
+          }`}
       >
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 flex items-center">
           <Logo className="h-9 w-auto text-gray-800" />
         </Link>
-
-        {/* Desktop Navigation */}
         <div className="hidden lg:flex items-center gap-10">
           {headerNavLinks.map((link) => (
             <NavbarLink
@@ -103,14 +100,16 @@ export function Header() {
 
         {/* CTA Button */}
         <div className="hidden lg:block">
-          <Link
-            href={headerCTA.href}
-            className={`inline-flex items-center justify-center bg-[#5748b6] text-white px-6 py-2.5 text-sm font-medium hover:bg-[#493b9e] transition-all duration-500 ${
-              isPill ? 'rounded-full' : 'rounded-lg'
-            }`}
+          <SpecularButton
+            size="sm"
+            radius={isPill ? 999 : 7}
+            tint="#6f5bd3"
+            baseColor="#4a329e"
+            autoAnimate
+            onClick={() => { window.location.href = headerCTA.href; }}
           >
             {headerCTA.text}
-          </Link>
+          </SpecularButton>
         </div>
 
         {/* Mobile Menu Button */}
@@ -153,13 +152,17 @@ export function Header() {
                 </motion.div>
               ))}
               <motion.div variants={mobileMenuItemVariants}>
-                <Link
-                  href={headerCTA.href}
-                  className="block w-full text-center bg-[#5748b6] text-white px-6 py-3 rounded-lg text-sm font-medium hover:bg-[#493b9e] transition-colors mt-4"
-                  onClick={() => setMobileMenuOpen(false)}
+                <SpecularButton
+                  size="sm"
+                  radius={7}
+                  className="mt-4 block w-full"
+                  tint="#6f5bd3"
+                  baseColor="#4a329e"
+                  autoAnimate
+                  onClick={() => { setMobileMenuOpen(false); window.location.href = headerCTA.href; }}
                 >
                   {headerCTA.text}
-                </Link>
+                </SpecularButton>
               </motion.div>
             </motion.div>
           </motion.div>

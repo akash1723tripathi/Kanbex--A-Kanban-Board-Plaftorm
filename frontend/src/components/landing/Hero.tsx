@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { heroContent } from '@/data/landing/hero';
 import GradientWaves from './GradientWaves';
+import { SpecularButton } from '@/components/ui';
 
 // Animation variants
 const fadeInUp = {
@@ -40,7 +41,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative max-w-[1440px] mx-auto  px-6 lg:px-[100px]">
+      <div className="relative max-w-[1440px] mx-auto px-6 lg:px-[100px]">
         {/* Hero Content */}
         <div className="text-center max-w-[785px] mx-auto pt-[88px]">
           {/* Badge */}
@@ -89,18 +90,21 @@ export function Hero() {
             initial="initial"
             animate="animate"
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex items-center justify-center gap-2.5 mt-7"
+            className="flex items-center justify-center gap-3 mt-7"
           >
-            <Link
-              href={heroContent.cta.primary.href}
-              className="relative inline-flex items-center justify-center bg-gradient-to-b from-[#6556c7] to-[#493b9e] text-white px-6 py-2.5 rounded-[7px] text-sm capitalize border border-white/20 overflow-hidden hover:from-[#7163d2] hover:to-[#5345ae] transition-colors"
+            <SpecularButton
+              radius={12}
+              className="h-[52px] min-w-[168px] px-8 text-base font-semibold"
+              tint="#6f5bd3"
+              baseColor="#4a329e"
+              autoAnimate
+              onClick={() => { window.location.href = heroContent.cta.primary.href; }}
             >
-              <span className="relative z-10">{heroContent.cta.primary.text}</span>
-              <div className="absolute inset-0 shadow-[inset_0px_3px_0px_0px_rgba(255,255,255,0.2)]" />
-            </Link>
+              {heroContent.cta.primary.text}
+            </SpecularButton>
             <Link
               href={heroContent.cta.secondary.href}
-              className="inline-flex items-center justify-center bg-white text-[#262730] px-6 py-2.5 rounded-[7px] text-sm font-medium capitalize shadow-[0px_-0.5px_1px_0px_rgba(0,0,0,0.15),0px_1px_1px_0px_rgba(0,0,0,0.3)] hover:bg-gray-50 transition-colors"
+              className="inline-flex h-[52px] min-w-[168px] items-center justify-center rounded-[12px] bg-white px-8 text-base font-semibold capitalize text-[#262730] shadow-[0px_-0.5px_1px_0px_rgba(0,0,0,0.15),0px_1px_1px_0px_rgba(0,0,0,0.3)] transition-colors hover:bg-gray-50"
             >
               {heroContent.cta.secondary.text}
             </Link>

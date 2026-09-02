@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ctaContent } from '@/data/landing/cta';
 import { easing, scrollViewport, fadeInUp as baseFadeInUp } from '@/lib/animations';
+import { RippleDistortion, SpecularButton } from '@/components/ui';
 
 export function CTA() {
   return (
@@ -15,10 +15,11 @@ export function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={scrollViewport}
           transition={{ duration: 0.8, ease: easing.smooth }}
-          className="bg-gray-900 rounded-[36px] px-6 py-12 md:px-12 md:py-16 lg:p-20"
+          className="relative overflow-hidden bg-gray-900 rounded-[36px] px-6 py-12 md:px-12 md:py-16 lg:p-20"
         >
+          <RippleDistortion src="/images/landing/newsletter-bg-image.png" strength={0.12} brushSize={180} rings={3} tint="#000000" tintAmount={0.16} glint={0.18} />
           {/* Content Container */}
-          <div className="flex flex-col items-center gap-6 max-w-[936px] mx-auto">
+          <div className="relative z-10 flex flex-col items-center gap-6 max-w-[936px] mx-auto">
             {/* Heading */}
             <motion.h2
               variants={baseFadeInUp}
@@ -51,12 +52,15 @@ export function CTA() {
               viewport={scrollViewport}
               transition={{ duration: 0.7, ease: easing.smooth, delay: 0.3 }}
             >
-              <Link
-                href={ctaContent.buttonHref}
-                className="inline-flex items-center justify-center bg-white text-[#262730] px-6 py-2.5 rounded-[7px] text-sm font-medium capitalize border border-gray-200 hover:bg-gray-50 transition-colors"
+              <SpecularButton
+                size="sm"
+                tint="#000000"
+                baseColor="#000000"
+                autoAnimate
+                onClick={() => { window.location.href = ctaContent.buttonHref; }}
               >
                 {ctaContent.buttonText}
-              </Link>
+              </SpecularButton>
             </motion.div>
           </div>
         </motion.div>
