@@ -54,12 +54,12 @@ export const MacbookScroll = ({
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [1.2, isMobile ? 1 : 1.5]
+    [1.2, isMobile ? 1 : 1.25]
   );
   const scaleY = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [0.6, isMobile ? 1 : 1.5]
+    [0.6, isMobile ? 1 : 1.25]
   );
   const translate = useTransform(scrollYProgress, [0, 1], [0, 1500]);
   const rotate = useTransform(
@@ -73,7 +73,7 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="relative min-h-[200vh] w-full overflow-visible px-0 pt-15 md:pt-10 pb-20"
+      className="relative min-h-[250vh] w-full overflow-visible px-0 pt-20 md:pt-16 pb-20"
     >
       <div className="flex flex-col items-center justify-start overflow-visible">
         {title && (
@@ -82,13 +82,13 @@ export const MacbookScroll = ({
               translateY: textTransform,
               opacity: textOpacity,
             }}
-            className="flex flex-col items-center justify-center text-center z-10 px-4 mb-4"
+            className="flex flex-col items-center justify-center text-center z-10 px-4 mb-10"
           >
             {title}
           </motion.div>
         )}
 
-        <div className="shrink-0 scale-[0.35] transform [perspective:800px] sm:scale-50 md:scale-100 flex flex-col items-center justify-start pt-4">
+        <div className="shrink-0 scale-[0.35] transform [perspective:800px] sm:scale-50 md:scale-[1.15] mt-8 md:mt-12 flex flex-col items-center justify-start pt-4">
           {/* Lid */}
           <Lid
             src={src}

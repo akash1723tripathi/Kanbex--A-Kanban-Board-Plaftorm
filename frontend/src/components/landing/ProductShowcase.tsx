@@ -10,7 +10,7 @@ export function ProductShowcase() {
       className="w-full bg-white relative"
       id="product-showcase"
     >
-      {/* The MacbookScroll component internally uses min-h-[200vh] for scroll
+      {/* The MacbookScroll component internally uses min-h-[250vh] for scroll
           tracking. We wrap it in a clip container so the animated elements
           never visually bleed into the Pricing section below. */}
       <div className="overflow-clip">
@@ -27,7 +27,7 @@ export function ProductShowcase() {
               </p>
             </div>
           }
-          src="/images/showcase/mockup2.png"
+          src="/images/showcase/mockup2k.jpeg"
           showGradient={false}
         />
       </div>
