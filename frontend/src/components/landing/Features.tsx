@@ -133,49 +133,50 @@ export function Features() {
             transition={{ duration: 0.7, ease: easing.smooth }}
             className="relative overflow-hidden rounded-[28px] bg-[#201e1b] p-7 text-white md:p-10"
           >
-            <div className="relative z-10 flex flex-col md:flex-row md:items-start md:justify-between md:gap-8">
-              <div className="max-w-[340px]">
-                <span className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/75">
-                  <Sparkles size={13} aria-hidden="true" />
-                  {featuresSection.secondary.dark.eyebrow}
-                </span>
-                <h3 className="mt-8 text-[32px] font-medium leading-[1.08] tracking-[-0.04em] text-[#d9d2ff] md:text-[38px]">
-                  {featuresSection.secondary.dark.title}
-                </h3>
-              </div>
+            {/* Restricted wrapper to ~50% width for eyebrow & title */}
+            <div className="relative z-10 max-w-full md:max-w-[48%]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-white/75">
+                <Sparkles size={13} aria-hidden="true" />
+                {featuresSection.secondary.dark.eyebrow}
+              </span>
+              <h3 className="mt-8 text-[32px] font-medium leading-[1.08] tracking-[-0.04em] text-[#d9d2ff] md:text-[38px]">
+                {featuresSection.secondary.dark.title}
+              </h3>
+            </div>
 
-              <div
-                className="mt-6 h-[172px] shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] p-4 md:mt-0 md:h-[190px] md:w-[285px]"
-                aria-hidden="true"
-              >
-                <div className="flex items-center justify-between text-[10px] text-white/45">
-                  <span>Website refresh</span>
-                  <span className="rounded-full bg-[#d9d2ff]/15 px-2 py-1 text-[#d9d2ff]">On track</span>
-                </div>
-                <div className="mt-4 grid grid-cols-3 gap-2">
-                  {['To do', 'In progress', 'Done'].map((lane, laneIndex) => (
-                    <div key={lane} className="rounded-lg bg-white/[0.06] p-2">
-                      <div className="mb-2 flex items-center justify-between text-[8px] text-white/45">
-                        <span>{lane}</span>
-                        <span>{laneIndex + 2}</span>
-                      </div>
-                      {[0, 1].map((card) => (
-                        <div
-                          key={card}
-                          className={[
-                            'mb-1.5 h-7 rounded-md border border-white/[0.08] bg-white/[0.09]',
-                            laneIndex === 2 && card === 1 ? 'opacity-40' : '',
-                          ].join(' ')}
-                        />
-                      ))}
+            {/* Floating Mockup Card */}
+            <div
+              className="relative mt-10 h-[172px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.07] p-4 md:absolute md:top-10 md:right-5 md:mt-0 md:h-[190px] md:w-[285px]"
+              aria-hidden="true"
+            >
+              <div className="flex items-center justify-between text-[10px] text-white/45">
+                <span>Website refresh</span>
+                <span className="rounded-full bg-[#d9d2ff]/15 px-2 py-1 text-[#d9d2ff]">On track</span>
+              </div>
+              <div className="mt-4 grid grid-cols-3 gap-2">
+                {['To do', 'In progress', 'Done'].map((lane, laneIndex) => (
+                  <div key={lane} className="rounded-lg bg-white/[0.06] p-2">
+                    <div className="mb-2 flex items-center justify-between text-[8px] text-white/45">
+                      <span>{lane}</span>
+                      <span>{laneIndex + 2}</span>
                     </div>
-                  ))}
-                </div>
+                    {[0, 1].map((card) => (
+                      <div
+                        key={card}
+                        className={[
+                          'mb-1.5 h-7 rounded-md border border-white/[0.08] bg-white/[0.09]',
+                          laneIndex === 2 && card === 1 ? 'opacity-40' : '',
+                        ].join(' ')}
+                      />
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="relative z-10 mt-8">
-              <p className="max-w-full text-sm leading-6 text-white/75">
+            {/* Full-width section below mockup with increased top margin */}
+            <div className="relative z-10 mt-12 md:mt-16">
+              <p className="max-w-xl text-sm leading-6 text-white/75">
                 {featuresSection.secondary.dark.description}
               </p>
               <Link
@@ -186,12 +187,14 @@ export function Features() {
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </div>
+
             <div
               className="absolute -bottom-24 -right-20 size-72 rounded-full bg-[#5748b6]/35 blur-3xl"
               aria-hidden="true"
             />
           </motion.div>
 
+          {/* Light Card */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
