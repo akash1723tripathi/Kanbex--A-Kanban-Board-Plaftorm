@@ -27,7 +27,7 @@ export function ProductShowcase() {
               </p>
             </div>
           }
-          src="/images/showcase/mockup.png"
+          src="/images/showcase/mockup2.png"
           showGradient={false}
         />
       </div>

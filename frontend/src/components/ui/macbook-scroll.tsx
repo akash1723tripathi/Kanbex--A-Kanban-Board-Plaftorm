@@ -73,7 +73,7 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="relative min-h-[200vh] w-full overflow-visible px-0 pt-8 md:pt-10 pb-20"
+      className="relative min-h-[200vh] w-full overflow-visible px-0 pt-15 md:pt-10 pb-20"
     >
       <div className="flex flex-col items-center justify-start overflow-visible">
         {title && (
@@ -173,7 +173,7 @@ export const Lid = ({
         <img
           src={src as string}
           alt="Kanbex Dashboard"
-          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
+          className="absolute inset-0 h-full w-full rounded-lg bg-white object-contain object-center"
         />
       </motion.div>
     </div>
