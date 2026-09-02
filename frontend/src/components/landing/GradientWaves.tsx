@@ -320,7 +320,11 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
     const io = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry.isIntersecting;
-        isVisible ? tryStart() : tryStop();
+        if (isVisible) {
+          tryStart();
+        } else {
+          tryStop();
+        }
       },
       { threshold: 0 }
     );
@@ -328,7 +332,11 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
 
     const onVisibility = () => {
       isPageVisible = !document.hidden;
-      isPageVisible ? tryStart() : tryStop();
+      if (isPageVisible) {
+        tryStart();
+      } else {
+        tryStop();
+      }
     };
     document.addEventListener('visibilitychange', onVisibility);
 
@@ -344,7 +352,9 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
       ctxMap.delete(container);
       try {
         container.removeChild(canvas);
-      } catch {}
+      } catch {
+        // The canvas may already have been removed during cleanup.
+      }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, []);
